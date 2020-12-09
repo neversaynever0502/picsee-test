@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 app.post('/short-url',function(req,res){
   let url = req.body.url
   TinyURL.shorten(url, function(result, err) {
-    res.json({url:result})
+    res.json({'short-url':result})
     if (err)
       console.log(err)
   });

@@ -1,0 +1,18 @@
+service: my-express-application
+
+provider:
+  name: aws
+  runtime: nodejs12.10
+  stage: dev
+  region: us-east-1
+
+functions:
+  app:
+    handler: index-serverless.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+  postShortUrl:
+    handler: index-serverless.handler
+    events:
+      - http: 'POST /short-url'
